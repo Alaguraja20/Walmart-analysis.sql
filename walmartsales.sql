@@ -57,6 +57,19 @@ ALTER TABLE sales ADD COLUMN month_name VARCHAR(10);
 UPDATE sales
 SET month_name = MONTHNAME(DATE);
 
+-- ---------------------------------------------------------------------------------------------
+-- -----------------------------------------Revenue---------------------------------------------
+
+SELECT SUM(total) AS Total_Revenue FROM sales;
+
+-- PROFIT AMOUNT
+
+SELECT SUM(gross_income) AS profit FROM sales;
+
+-- PROFIT PERCENTAGE
+
+SELECT SUM(gross_income)/SUM(total)*100 AS profit_pct FROM sales;
+
 
 -- --------------------------------------------------------------------------------------------
 -- ------------------------------------GENERIC QUESTION----------------------------------------
@@ -287,3 +300,4 @@ ROUND(SUM(total),2) AS Total_rev
 FROM sales
 GROUP BY product_line, customer_type
 ORDER BY product_line;
+
